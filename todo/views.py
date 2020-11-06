@@ -1,20 +1,15 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
 
 # Create your views here.
 
-def say_hello(request):
-    """say_hello:
-
-    * Simple function that take an Http request from the user
-    and returns a http response.
-    * We need to add this function into our
-    urls.py so that it is available to the web browser.
+def get_todo_list(request):
+    """get_todo_list:
 
     \n Args:
     1.  request: A user entered http request in the address bar
 
-    Returns:
-    1. A http response, saying Hello.
+    \n Returns:
+    1. the todo_list.html template.
     """
-    return HttpResponse("Hello!")
+    return render(request, 'todo/todo_list.html')

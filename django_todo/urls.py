@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todo.views import say_hello
+from todo.views import get_todo_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # define the url that will trigger the say_hello
-
-    
-    path('hello/', say_hello, name='hello'),
+    # here we will make the url blank, so it does not need a specific url to
+    # activate the get_todo_list view
+    # keep name the same for now, could use home as it is effectively a home
+    # page
+    path('', get_todo_list, name='get_todo_list'),
 ]
