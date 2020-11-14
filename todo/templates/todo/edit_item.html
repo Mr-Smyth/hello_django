@@ -6,15 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Add something you need to do:</h1>
-    <!-- This is our action, and we are submitting it to add url/view-->
-    <!-- if there is no action it will still work as it will default to submitting to current url -->
-    <form method="POST" action="add">
+    <h1>Edit an Item:</h1>
+    <!-- No action is required here as the id will be in the url, and we want to submit to that url
+    effectively handing the id into the view to be processed. -->
+    <form method="POST">
     {% csrf_token %} 
     {{ form.as_p }}
     <dix>
         <p>
-            <button type="submit">Add Item</button>
+            <button type="submit">Edit Item</button>
         </p>
     </dix>
     

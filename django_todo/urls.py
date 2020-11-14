@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todo.views import get_todo_list, add_item
+# Import all the views to save space
+from todo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,6 +24,10 @@ urlpatterns = [
     # activate the get_todo_list view
     # keep name the same for now, could use home as it is effectively a home
     # page
-    path('', get_todo_list, name='get_todo_list'),
-    path('add', add_item, name='add'),
+    path('', views.get_todo_list, name='get_todo_list'),
+    path('add', views.add_item, name='add'),
+    # notice below path matches edit button in html file.
+    path('edit/<item_id>', views.edit_item, name='edit'),
+    path('toggle/<item_id>', views.toggle_item, name='toggle'),
+    path('delete/<item_id>', views.delete_item, name='delete')
 ]
