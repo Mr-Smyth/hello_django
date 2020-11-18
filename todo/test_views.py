@@ -64,3 +64,16 @@ class TestViews(TestCase):
         updated_item = Item.objects.get(id=item.id)
         # check that its done status has been changed
         self.assertFalse(updated_item.done)
+
+    def test_can_edit_item(self):
+        # create a mock item to use in our test
+        item = Item.objects.create(name='Test_item')
+        # use built in http client to get the response code
+        response = self.client.post(f'/edit/{item.id}',
+                                    {'name': 'New Test Item'})
+        # check if the response causes redirect back to home page
+        self.assertRedirects(response, '/')
+        # Get the item again
+        updated_item = Item.objects.get(id=item.id)
+        # check that its name has been changed
+        self.assertEqual(updated_item.name, 'New Test Item')
